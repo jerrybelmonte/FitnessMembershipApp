@@ -1,7 +1,7 @@
-using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-
+using CommonServiceLocator;
+using System;
 
 namespace GymMembers.ViewModel
 {
@@ -21,6 +21,9 @@ namespace GymMembers.ViewModel
             //TODO: Register other views
         }
 
+        /// <summary>
+        /// A property that lets the main window connect with its View Model.
+        /// </summary>
         public MainViewModel Main
         {
             get

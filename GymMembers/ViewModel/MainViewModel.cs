@@ -43,7 +43,7 @@ namespace GymMembers.ViewModel
             //ExitCommand = 
             //ChangedCommand =
             //Messenger.Default.Register<MessageMember>(this, ReceiveMember);
-            //Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
+            Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
         }
 
         /// <summary>
@@ -67,24 +67,24 @@ namespace GymMembers.ViewModel
         /// <summary>
         /// Shows a new add screen.
         /// </summary>
-        public void AddMethod() //TODO: AddMethod()
+        public void AddMethod() 
         {
-            //AddWindow add = new AddWindow();
-            //add.Show();
+            AddWindow add = new AddWindow();
+            add.Show();
         }
-        /*
+        
         /// <summary>
         /// Closes the application.
         /// </summary>
         /// <param name="window">The window to close.</param>
-        public void ExitMethod(IClosable window) //TODO: ExitMethod()
+        public void ExitMethod(IClosable window) 
         {
             if (window != null)
             {
                 window.Close();
             }
         }
-        */
+        
         /// <summary>
         /// Opens the change window.
         /// </summary>
@@ -92,12 +92,12 @@ namespace GymMembers.ViewModel
         {
             if (SelectedMember != null)
             {
-                //ChangeWindow change = new ChangeWindow();
-                //change.Show();
+                ChangeWindow change = new ChangeWindow();
+                change.Show();
                 //Messenger.Default.Send(); //TODO send
             }
         }
-        /*
+        
         /// <summary>
         /// Gets a new member for the list.
         /// </summary>
@@ -116,7 +116,7 @@ namespace GymMembers.ViewModel
                 database.SaveMemberships();
             }
         }
-        */
+        
         /// <summary>
         /// Gets text messages.
         /// </summary>
