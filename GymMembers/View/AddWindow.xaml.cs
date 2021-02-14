@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+// KEIRA: (ErrorWindow.xaml Pop-Up) Added namespace.
+using GymMembers.ViewModel;
+
 namespace GymMembers.View
 {
     /// <summary>
@@ -22,6 +25,8 @@ namespace GymMembers.View
         public AddWindow()
         {
             InitializeComponent();
+            // KEIRA: (ErrorWindow.xaml Pop-Up) Bind DataContext of AddWindow to AddViewModel.
+            this.DataContext = new AddViewModel();
         }
     }
 }

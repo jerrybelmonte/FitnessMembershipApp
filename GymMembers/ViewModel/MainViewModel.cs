@@ -9,6 +9,11 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 
+// KEIRA: (AddWindow.xaml Pop-Up) Add namespaces.
+using Prism.Mvvm;
+using Prism.Commands;
+using System.Windows.Data;
+
 namespace GymMembers.ViewModel
 {
     /// <summary>
@@ -38,17 +43,20 @@ namespace GymMembers.ViewModel
         {
             members = new ObservableCollection<Member>();
             database = new MemberDB(members);
-            members = MemberDB.GetSampleMemberships(); //database.GetMemberships();
-            AddCommand = new RelayCommand(AddMethod);
-            ExitCommand = new RelayCommand<IClosable>(ExitMethod);
-            ChangeCommand = new RelayCommand(ChangeMethod);
-            Messenger.Default.Register<MessageMember>(this, ReceiveMember);
+            members = database.GetMemberships();
+            // KEIRA: (AddWindow.xaml Pop-Up) Attach AddCommand to AddMethod to act as an event.
+            AddCommand = new RelayCommand<IClosable>(AddMethod);
+            // TODO: ExitCommand = 
+            // TODO: ChangedCommand =
+            //Messenger.Default.Register<MessageMember>(this, ReceiveMember);
             Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
         }
 
         /// <summary>
         /// The command that triggers adding a new member.
         /// </summary>
+        /// 
+        // KEIRA: (AddWindow.xaml) Add AddCommand.
         public ICommand AddCommand { get; private set; }
 
         /// <summary>
@@ -77,7 +85,9 @@ namespace GymMembers.ViewModel
         /// <summary>
         /// Shows a new add screen.
         /// </summary>
-        public void AddMethod() 
+        ///
+        // KEIRA: (AddWindow.xaml Pop-Up) Add AddMethod() to support AddWindow.xaml pop-up. 
+        public void AddMethod(IClosable window) // KEIRA: (Needs IClosable as a parameter to match RelayCommand/delegate signature.)
         {
             AddWindow add = new AddWindow();
             add.Show();
@@ -91,7 +101,6 @@ namespace GymMembers.ViewModel
         {
             if (window != null)
             {
-                Console.WriteLine("ExitMethod");
                 window.Close();
             }
         }
@@ -106,7 +115,6 @@ namespace GymMembers.ViewModel
                 ChangeWindow change = new ChangeWindow();
                 change.Show();
                 //Messenger.Default.Send(); //TODO send
-                Console.WriteLine("ChangeMethod: " + SelectedMember.ToString());
             }
         }
         
@@ -120,13 +128,11 @@ namespace GymMembers.ViewModel
             if (m.Message == "Update")
             {
                 //TODO update
-                Console.WriteLine("ReceiveMember - Update: " + m.ToString() + m.Message);
                 database.SaveMemberships();
             }
             else if (m.Message == "Add")
             {
                 //TODO add
-                Console.WriteLine("ReceiveMember - Add: " + m.ToString() + m.Message);
                 database.SaveMemberships();
             }
         }
@@ -140,7 +146,6 @@ namespace GymMembers.ViewModel
             if (msg.Notification == "Delete")
             {
                 //TODO delete
-                Console.WriteLine("ReceiveMessage: " + msg.ToString());
                 database.SaveMemberships();
             }
         }
