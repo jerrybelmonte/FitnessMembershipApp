@@ -36,6 +36,8 @@ namespace GymMembers.ViewModel
         public ChangeViewModel()
         {
             //TODO
+            UpdateCommand = new RelayCommand<IClosable>(UpdateMethod);
+            DeleteCommand = new RelayCommand<IClosable>(DeleteMethod);
             //Messenger.Default.Register<Member>(this,);
         }
 
