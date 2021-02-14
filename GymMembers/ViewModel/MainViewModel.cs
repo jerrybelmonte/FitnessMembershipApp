@@ -44,9 +44,10 @@ namespace GymMembers.ViewModel
             members = new ObservableCollection<Member>();
             database = new MemberDB(members);
             members = database.GetMemberships();
-            // KEIRA: (AddWindow.xaml Pop-Up) Attach AddCommand to AddMethod to act as an event.
+            // KEIRA: (AddWindow.xaml Pop-Up) Attach AddCommand to AddMethod() to act as an event.
             AddCommand = new RelayCommand<IClosable>(AddMethod);
-            // TODO: ExitCommand = 
+            // KEIRA: (ExitCommand) Attach ExitCommand to ExitMethod() to act as an event. 
+            this.ExitCommand = new RelayCommand<IClosable>(this.ExitMethod);
             // TODO: ChangedCommand =
             //Messenger.Default.Register<MessageMember>(this, ReceiveMember);
             Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
@@ -58,6 +59,9 @@ namespace GymMembers.ViewModel
         /// 
         // KEIRA: (AddWindow.xaml) Add AddCommand.
         public ICommand AddCommand { get; private set; }
+
+        // KEIRA: (ExitCommand) Add ExitCommand.
+        public RelayCommand<IClosable> ExitCommand { get; private set; }
 
         /// <summary>
         /// The currently selected member in the list box.
@@ -76,17 +80,19 @@ namespace GymMembers.ViewModel
         /// Shows a new add screen.
         /// </summary>
         ///
-        // KEIRA: (AddWindow.xaml Pop-Up) Add AddMethod() to support AddWindow.xaml pop-up. 
+        // KEIRA: (AddWindow.xaml Pop-Up) Add AddMethod(). 
         public void AddMethod(IClosable window) // KEIRA: (Needs IClosable as a parameter to match RelayCommand/delegate signature.)
         {
             AddWindow add = new AddWindow();
             add.Show();
         }
-        
+
         /// <summary>
         /// Closes the application.
         /// </summary>
         /// <param name="window">The window to close.</param>
+        ///
+        // KEIRA: (ExitCommand) Add ExitMethod().
         public void ExitMethod(IClosable window) 
         {
             if (window != null)
