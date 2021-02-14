@@ -72,7 +72,7 @@ namespace GymMembers.ViewModel
                 if (window != null)
                 {
                     var addViewModelMessage = new MessageMember(EnteredFName, EnteredLName, EnteredEmail, "Add");
-                    Messenger.Default.Send(addViewModelMessage);
+                    Messenger.Default.Send(addViewModelMessage); // sends "Add" message to MainViewModel.ReceiveMember(MessageMember m)
                     window.Close();
                 }
             }

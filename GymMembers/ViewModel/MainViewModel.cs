@@ -42,8 +42,8 @@ namespace GymMembers.ViewModel
         public MainViewModel() //TODO: MainViewModel() constructor
         {
             members = new ObservableCollection<Member>();
-            database = new MemberDB(members);
-            members = database.GetSampleMemberships();
+            database = new MemberDB(members); // dependency injection of the members list into the database instance
+            members = database.GetMemberships();
             // KEIRA: (AddWindow.xaml Pop-Up) Attach AddCommand to AddMethod to act as an event.
             AddCommand = new RelayCommand<IClosable>(AddMethod);
             // KEIRA: (ExitCommand) Attach ExitCommand to ExitMethod() to act as an event. 
@@ -65,7 +65,7 @@ namespace GymMembers.ViewModel
         /// </summary>
         /// 
         // KEIRA: (ExitCommand) Add ExitCommand.
-        public RelayCommand<IClosable> ExitCommand { get; private set; }
+        public ICommand ExitCommand { get; private set; }
 
         /// <summary>
         /// The command that triggers changing the membership.
@@ -137,7 +137,7 @@ namespace GymMembers.ViewModel
             }
             else if (m.Message == "Add")
             {
-                //TODO add
+                members.Add(new Member(m.FirstName, m.LastName, m.Email));
                 database.SaveMemberships();
             }
         }
