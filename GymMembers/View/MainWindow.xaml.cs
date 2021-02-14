@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+// KEIRA: (AddWindow.xaml Pop-Up) Added namespace.
+using GymMembers.ViewModel;
+
 namespace GymMembers.View
 {
     /// <summary>
@@ -23,6 +26,8 @@ namespace GymMembers.View
         public MainWindow()
         {
             InitializeComponent();
+            // KEIRA: (AddWindow.xaml Pop-Up) Bind DataContext of MainWindow to MainViewModel.
+            this.DataContext = new MainViewModel();
         }
     }
 }

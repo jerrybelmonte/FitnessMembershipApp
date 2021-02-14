@@ -8,7 +8,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 
-// TODO: Add namespaces to support ErrorWindow.xaml.
+// KEIRA: (ErrorWindow.xaml Pop-Up) Add namespaces.
 using GymMembers.View;
 using Prism.Mvvm;
 using Prism.Commands;
@@ -42,9 +42,9 @@ namespace GymMembers.ViewModel
         public AddViewModel()
         {
             SaveCommand = new RelayCommand<IClosable>(SaveMethod);
-            //TODO: ShowCommand
+            // KEIRA: (ErrorWindow.xaml Pop-Up) Attach ShowCommand to ShowMethod to act as an event.
             ShowCommand = new RelayCommand<IClosable>(ShowMethod);
-            //TODO: CancelCommand
+            // TODO: CancelCommand
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace GymMembers.ViewModel
         /// </summary>
         public ICommand CancelCommand { get; private set; }
 
-        // TODO: Add ShowCommand to support ErrorWindow.xaml.
+        // KEIRA: (ErrorWindow.xaml Pop-Up) Add ShowCommand.
         public ICommand ShowCommand { get; private set; }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace GymMembers.ViewModel
             }
         }
 
-        // TODO: Add ShowMethod() to support ErrorWindow.xaml.
+        // KEIRA: (ErrorWindow.xaml Pop-Up) Add ShowMethod().
         public void ShowMethod(IClosable window) {
             ErrorWindow errorWindow = new ErrorWindow();
             errorWindow.Show();
