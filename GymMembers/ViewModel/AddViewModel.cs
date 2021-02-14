@@ -44,7 +44,8 @@ namespace GymMembers.ViewModel
             SaveCommand = new RelayCommand<IClosable>(SaveMethod);
             // KEIRA: (ErrorWindow.xaml Pop-Up) Attach ShowCommand to ShowMethod to act as an event.
             ShowCommand = new RelayCommand<IClosable>(ShowMethod);
-            // TODO: CancelCommand
+            // TODO: 
+            CancelCommand = new RelayCommand<IClosable>(CancelMethod);
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace GymMembers.ViewModel
             {
                 if (window != null)
                 {
-                    //Messenger.Default.Send(); TODO
+                    //Messenger.Default.Send();
                     window.Close();
                 }
             }

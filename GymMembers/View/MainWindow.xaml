@@ -20,16 +20,25 @@
             </CollectionViewSource>
         </Grid.Resources>
 
-        <Button x:Name="button1" Content="Add" Grid.Row="1" Grid.Column="1" 
+        <Button x:Name="button1" Content="Add" 
+                Grid.Row="1" Grid.Column="1" 
                 Command="{Binding AddCommand}" 
-                HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,50,0,0"/>
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Width="75" Margin="0,50,0,0"/>
         
-        <Button x:Name="button2" Content="Exit" Grid.Row="1" Grid.Column="1" 
-                Command="{Binding ExitCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=mainWindow}" 
-                HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,50"/>
+        <Button x:Name="button2" Content="Exit" 
+                Grid.Row="1" Grid.Column="1" 
+                Command="{Binding ExitCommand, Mode=OneWay}" 
+                CommandParameter="{Binding ElementName=mainWindow}" 
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                Width="75" Margin="0,0,0,50"/>
 
-        <ListBox x:Name="listBox" ItemsSource="{Binding Source={StaticResource SortedItems}}" SelectedItem="{Binding SelectedMember}" 
-                 Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="220" Width="322">
+        <ListBox x:Name="listBox" 
+                 Grid.Row="1" Grid.Column="0" 
+                 ItemsSource="{Binding Source={StaticResource SortedItems}}" 
+                 SelectedItem="{Binding SelectedMember}" 
+                 HorizontalAlignment="Center" VerticalAlignment="Center" 
+                 Height="220" Width="322">
             
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseUp">
