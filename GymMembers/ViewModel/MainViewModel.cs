@@ -43,13 +43,13 @@ namespace GymMembers.ViewModel
         {
             members = new ObservableCollection<Member>();
             database = new MemberDB(members);
-            members = database.GetMemberships();
-            // KEIRA: (AddWindow.xaml Pop-Up) Attach AddCommand to AddMethod() to act as an event.
+            members = database.GetSampleMemberships();
+            // KEIRA: (AddWindow.xaml Pop-Up) Attach AddCommand to AddMethod to act as an event.
             AddCommand = new RelayCommand<IClosable>(AddMethod);
             // KEIRA: (ExitCommand) Attach ExitCommand to ExitMethod() to act as an event. 
             this.ExitCommand = new RelayCommand<IClosable>(this.ExitMethod);
             // TODO: ChangedCommand =
-            //Messenger.Default.Register<MessageMember>(this, ReceiveMember);
+            Messenger.Default.Register<MessageMember>(this, ReceiveMember);
             Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
         }
 

@@ -79,18 +79,13 @@ namespace GymMembers.Model
 
         private IEnumerable<string> EnumerateMembers() => from m in members select m.ToString();
 
-        public static ObservableCollection<Member> GetSampleMemberships() // temporary membership list
+        public ObservableCollection<Member> GetSampleMemberships() // temporary membership list
         {
-            ObservableCollection<Member> tempMembers = new ObservableCollection<Member>();
-            for (int i = 0; i < 5; ++i)
+            ObservableCollection<Member> tempMembers = new ObservableCollection<Member>
             {
-                tempMembers.Add(new Member 
-                {
-                    FirstName = "First" + (i + 1).ToString(),
-                    LastName = "Last" + (i + 1).ToString(),
-                    Email = "email" + (i + 1).ToString() + "@mail.com"
-                });
-            }
+                new Member("John", "Nguyen", "John@csulb.edu"),
+                new Member("James", "Davis", "James@verizon.net")
+            };
             return tempMembers;
         }
     }

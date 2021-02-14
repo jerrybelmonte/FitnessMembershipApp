@@ -71,7 +71,7 @@ namespace GymMembers.ViewModel
             {
                 if (window != null)
                 {
-                    //Messenger.Default.Send(); TODO
+                    //Messenger.Default.Send();
                     window.Close();
                 }
             }
