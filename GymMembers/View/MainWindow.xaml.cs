@@ -21,7 +21,7 @@ namespace GymMembers.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IClosable // KEIRA: (CloseWindowCommand) MainWindow must also implement the IClosable interface.
+    public partial class MainWindow : Window, IClosable // KEIRA: (ExitCommand) MainWindow must also implement the IClosable interface.
     {
         public MainWindow()
         {

@@ -20,7 +20,7 @@ namespace GymMembers.View
     /// <summary>
     /// Interaction logic for AddWindow.xaml
     /// </summary>
-    public partial class AddWindow : Window
+    public partial class AddWindow : Window, IClosable // KEIRA: (CancelCommand) AddWindow must also implement the IClosable interface.
     {
         public AddWindow()
         {

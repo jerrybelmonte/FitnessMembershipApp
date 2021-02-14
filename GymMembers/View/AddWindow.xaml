@@ -32,7 +32,7 @@
         <!-- Buttons -->
         
         <!-- TODO: Set Binding=ShowCommand to open ErrorWindow on clicking the Save button for testing. Change so that ErrorWindow only "shows" when input is invalid. -->
-        <Button x:Name="button1" Content="Save" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName= w}" Width="75" Grid.Row="4" Grid.Column="0"/>
-        <!--<Button x:Name="button2" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding }" CommandParameter="{Binding ElementName= }" Width="75" Grid.Row="4" Grid.Column="1"/>-->
+        <Button x:Name="button1" Content="Save" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName= addWindow}" Width="75" Grid.Row="4" Grid.Column="0"/>
+        <Button x:Name="button2" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName= addWindow}" Width="75" Grid.Row="4" Grid.Column="1"/>
     </Grid>
 </Window>
