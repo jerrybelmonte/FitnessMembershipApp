@@ -71,7 +71,8 @@ namespace GymMembers.ViewModel
             {
                 if (window != null)
                 {
-                    //Messenger.Default.Send();
+                    var addViewModelMessage = new MessageMember(EnteredFName, EnteredLName, EnteredEmail, "Add");
+                    Messenger.Default.Send(addViewModelMessage);
                     window.Close();
                 }
             }
