@@ -38,11 +38,11 @@ namespace GymMembers.ViewModel
         {
             members = new ObservableCollection<Member>();
             database = new MemberDB(members);
-            members = database.GetMemberships();
-            //AddCommand =
-            //ExitCommand = 
-            //ChangedCommand =
-            //Messenger.Default.Register<MessageMember>(this, ReceiveMember);
+            members = MemberDB.GetSampleMemberships(); //database.GetMemberships();
+            AddCommand = new RelayCommand(AddMethod);
+            ExitCommand = new RelayCommand<IClosable>(ExitMethod);
+            ChangeCommand = new RelayCommand(ChangeMethod);
+            Messenger.Default.Register<MessageMember>(this, ReceiveMember);
             Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
         }
 
@@ -50,6 +50,16 @@ namespace GymMembers.ViewModel
         /// The command that triggers adding a new member.
         /// </summary>
         public ICommand AddCommand { get; private set; }
+
+        /// <summary>
+        /// The command that triggers closing the main window.
+        /// </summary>
+        public RelayCommand<IClosable> ExitCommand { get; private set; }
+
+        /// <summary>
+        /// The command that triggers changing the membership.
+        /// </summary>
+        public ICommand ChangeCommand { get; private set; }
 
         /// <summary>
         /// The currently selected member in the list box.
@@ -81,6 +91,7 @@ namespace GymMembers.ViewModel
         {
             if (window != null)
             {
+                Console.WriteLine("ExitMethod");
                 window.Close();
             }
         }
@@ -95,6 +106,7 @@ namespace GymMembers.ViewModel
                 ChangeWindow change = new ChangeWindow();
                 change.Show();
                 //Messenger.Default.Send(); //TODO send
+                Console.WriteLine("ChangeMethod: " + SelectedMember.ToString());
             }
         }
         
@@ -108,11 +120,13 @@ namespace GymMembers.ViewModel
             if (m.Message == "Update")
             {
                 //TODO update
+                Console.WriteLine("ReceiveMember - Update: " + m.ToString() + m.Message);
                 database.SaveMemberships();
             }
             else if (m.Message == "Add")
             {
                 //TODO add
+                Console.WriteLine("ReceiveMember - Add: " + m.ToString() + m.Message);
                 database.SaveMemberships();
             }
         }
@@ -126,6 +140,7 @@ namespace GymMembers.ViewModel
             if (msg.Notification == "Delete")
             {
                 //TODO delete
+                Console.WriteLine("ReceiveMessage: " + msg.ToString());
                 database.SaveMemberships();
             }
         }

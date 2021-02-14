@@ -12,7 +12,7 @@ namespace GymMembers.Model
     /// </summary>
     public class Member : ObservableObject
     {
-        private const int TEXT_LIMIT = 50; //TODO: what should the text limit be?
+        private const int TEXT_LIMIT = 25;
 
         /// <summary>
         /// The member's first name.
