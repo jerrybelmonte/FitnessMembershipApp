@@ -6,8 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GymMembers.View"
         mc:Ignorable="d"
-        DataContext="{Binding Source={StaticResource Locator}, Path= }"
+        
         Title="Add Membership" Height="237" Width="300">
+    <!--DataContext="{Binding Source={StaticResource Locator}, Path= }"-->
     <Grid Background="#FFECEAEA">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -25,11 +26,11 @@
         <Label x:Name="label2" Content="Last Name:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
         <Label x:Name="label3" Content="E-mail:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
         <!-- TextBoxes -->
-        <TextBox x:Name="textBox1" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding }" Width="120" Grid.Row="1" Grid.Column="1"/>
+        <!--<TextBox x:Name="textBox1" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding }" Width="120" Grid.Row="1" Grid.Column="1"/>
         <TextBox x:Name="textBox2" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding }" Width="120" Grid.Row="2" Grid.Column="1"/>
-        <TextBox x:Name="textBox3" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding }" Width="120" Grid.Row="3" Grid.Column="1"/>
+        <TextBox x:Name="textBox3" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding }" Width="120" Grid.Row="3" Grid.Column="1"/>-->
         <!-- Buttons -->
-        <Button x:Name="button1" Content="Save" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding }" CommandParameter="{Binding ElementName= w}" Width="75" Grid.Row="4" Grid.Column="0"/>
-        <Button x:Name="button2" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding }" CommandParameter="{Binding ElementName= --}" Width="75" Grid.Row="4" Grid.Column="1"/>
+        <!--<Button x:Name="button1" Content="Save" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding }" CommandParameter="{Binding ElementName= w}" Width="75" Grid.Row="4" Grid.Column="0"/>
+        <Button x:Name="button2" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding }" CommandParameter="{Binding ElementName= }" Width="75" Grid.Row="4" Grid.Column="1"/>-->
     </Grid>
 </Window>

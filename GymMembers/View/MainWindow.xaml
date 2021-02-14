@@ -8,13 +8,14 @@
         xmlns:local="clr-namespace:GymMembers"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
-        DataContext="{Binding Source={StaticResource Locator}, Path= }"
+        
         Title="Gym Memberships" Height="350" Width="525">
+    <!--DataContext="{Binding Source={StaticResource Locator}, Path= }"-->
     <Grid Background="#FFECEAEA">
         <Grid.Resources>
             <CollectionViewSource x:Key="SortedItems" Source="{Binding MemberList}" >
                 <CollectionViewSource.SortDescriptions>
-                    <scm1:SortDescription PropertyName="FirstName"/>
+                    <!--<scm1:SortDescription PropertyName="FirstName"/>-->
                 </CollectionViewSource.SortDescriptions>
             </CollectionViewSource>
         </Grid.Resources>
@@ -22,13 +23,13 @@
         <Button x:Name="button1" Content="Add" Grid.Row="1" Grid.Column="1" Command="{Binding }" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,50,0,0"/>
         <Button x:Name="button2" Content="Exit" Grid.Row="1" Grid.Column="1" Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=mainWindow}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,50"/>
 
-        <ListBox x:Name="listBox" ItemsSource="{Binding Source={StaticResource }}" SelectedItem="{Binding }" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="220" Width="322">
+        <!--<ListBox x:Name="listBox" ItemsSource="{Binding Source={StaticResource }}" SelectedItem="{Binding }" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="220" Width="322">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseUp">
                     <i:InvokeCommandAction Command="{Binding }"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </ListBox>
+        </ListBox>-->
         
         <Label x:Name="label" Content="Customers:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
 
