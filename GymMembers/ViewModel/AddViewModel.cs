@@ -71,7 +71,8 @@ namespace GymMembers.ViewModel
             {
                 if (window != null)
                 {
-                    Messenger.Default.Send<MessageMember>(new MessageMember(enteredFName, enteredLName, enteredEmail, "Member Loaded."));
+                    var addViewModelMessage = new MessageMember(EnteredFName, EnteredLName, EnteredEmail, "Add");
+                    Messenger.Default.Send(addViewModelMessage); // sends "Add" message to MainViewModel.ReceiveMember(MessageMember m)
                     window.Close();
                 }
             }
