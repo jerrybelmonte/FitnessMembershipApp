@@ -8,6 +8,12 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 
+// TODO: Add namespaces to support ErrorWindow.xaml.
+using GymMembers.View;
+using Prism.Mvvm;
+using Prism.Commands;
+using System.Windows.Data;
+
 namespace GymMembers.ViewModel
 {
     /// <summary>
@@ -36,7 +42,9 @@ namespace GymMembers.ViewModel
         public AddViewModel()
         {
             SaveCommand = new RelayCommand<IClosable>(SaveMethod);
-            //TODO: cancelCommand
+            //TODO: ShowCommand
+            ShowCommand = new RelayCommand<IClosable>(ShowMethod);
+            //TODO: CancelCommand
         }
 
         /// <summary>
@@ -48,6 +56,9 @@ namespace GymMembers.ViewModel
         /// The command that triggers closing the add window.
         /// </summary>
         public ICommand CancelCommand { get; private set; }
+
+        // TODO: Add ShowCommand to support ErrorWindow.xaml.
+        public ICommand ShowCommand { get; private set; }
 
         /// <summary>
         /// Sends a valid member to the Main VM to add to the list, then closes the window.
@@ -87,6 +98,12 @@ namespace GymMembers.ViewModel
             {
                 window.Close();
             }
+        }
+
+        // TODO: Add ShowMethod() to support ErrorWindow.xaml.
+        public void ShowMethod(IClosable window) {
+            ErrorWindow errorWindow = new ErrorWindow();
+            errorWindow.Show();
         }
 
         /// <summary>

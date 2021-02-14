@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-// TODO: Added namespace to support ErrorWindow.xaml.
-using GymMembers.ViewModel;
-
 namespace GymMembers.View
 {
     /// <summary>
-    /// Interaction logic for AddWindow.xaml
+    /// Interaction logic for ErrorWindow.xaml
     /// </summary>
-    public partial class AddWindow : Window
+    public partial class ErrorWindow : Window
     {
-        public AddWindow()
+        public ErrorWindow()
         {
             InitializeComponent();
-            // TODO: Bind DataContext of AddWindow to AddViewModel to support ErrorWindow.xaml.
-            this.DataContext = new AddViewModel();
         }
     }
 }
