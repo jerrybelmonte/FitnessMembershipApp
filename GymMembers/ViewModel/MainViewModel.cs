@@ -60,12 +60,11 @@ namespace GymMembers.ViewModel
         // KEIRA: (AddWindow.xaml) Add AddCommand.
         public ICommand AddCommand { get; private set; }
 
-        // KEIRA: (ExitCommand) Add ExitCommand.
-        public RelayCommand<IClosable> ExitCommand { get; private set; }
-
         /// <summary>
         /// The command that triggers closing the main window.
         /// </summary>
+        /// 
+        // KEIRA: (ExitCommand) Add ExitCommand.
         public RelayCommand<IClosable> ExitCommand { get; private set; }
 
         /// <summary>
