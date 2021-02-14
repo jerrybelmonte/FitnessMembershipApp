@@ -64,6 +64,16 @@ namespace GymMembers.ViewModel
         public RelayCommand<IClosable> ExitCommand { get; private set; }
 
         /// <summary>
+        /// The command that triggers closing the main window.
+        /// </summary>
+        public RelayCommand<IClosable> ExitCommand { get; private set; }
+
+        /// <summary>
+        /// The command that triggers changing the membership.
+        /// </summary>
+        public ICommand ChangeCommand { get; private set; }
+
+        /// <summary>
         /// The currently selected member in the list box.
         /// </summary>
         public Member SelectedMember 

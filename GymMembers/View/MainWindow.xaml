@@ -6,31 +6,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:GymMembers.ViewModel"
         xmlns:local="clr-namespace:GymMembers"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:scm1="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
-        
+        DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
         Title="Gym Memberships" Height="350" Width="525">
-    <!--DataContext="{Binding Source={StaticResource Locator}, Path= }"-->
     <Grid Background="#FFECEAEA">
         <Grid.Resources>
             <CollectionViewSource x:Key="SortedItems" Source="{Binding MemberList}" >
                 <CollectionViewSource.SortDescriptions>
-                    <!--<scm1:SortDescription PropertyName="FirstName"/>-->
+                    <scm1:SortDescription PropertyName="FirstName"/>
                 </CollectionViewSource.SortDescriptions>
             </CollectionViewSource>
         </Grid.Resources>
 
-        <Button x:Name="button1" Content="Add" Grid.Row="1" Grid.Column="1" Command="{Binding AddCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,50,0,0"/>
-        <Button x:Name="button2" Content="Exit" Grid.Row="1" Grid.Column="1" Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=mainWindow}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,50"/>
+        <Button x:Name="button1" Content="Add" Grid.Row="1" Grid.Column="1" 
+                Command="{Binding AddCommand}" 
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,50,0,0"/>
+        
+        <Button x:Name="button2" Content="Exit" Grid.Row="1" Grid.Column="1" 
+                Command="{Binding ExitCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=mainWindow}" 
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,50"/>
 
-        <!--<ListBox x:Name="listBox" ItemsSource="{Binding Source={StaticResource }}" SelectedItem="{Binding }" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="220" Width="322">
+        <ListBox x:Name="listBox" ItemsSource="{Binding Source={StaticResource SortedItems}}" SelectedItem="{Binding SelectedMember}" 
+                 Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="220" Width="322">
+            
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseUp">
-                    <i:InvokeCommandAction Command="{Binding }"/>
+                    <i:InvokeCommandAction Command="{Binding ChangeCommand}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </ListBox>-->
-        
+            
+        </ListBox>
+
         <Label x:Name="label" Content="Customers:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
 
         <Grid.ColumnDefinitions>
