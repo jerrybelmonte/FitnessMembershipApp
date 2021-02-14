@@ -69,24 +69,10 @@ namespace GymMembers.Model
         /// </summary>
         public void SaveMemberships()
         {
-            //StreamWriter output = new StreamWriter(new FileStream(filepath, FileMode.Create, FileAccess.Write));
-
-            //TODO: write the output text file
             File.WriteAllLines(filepath, EnumerateMembers());
-
-            //output.Close();
         }
 
         private IEnumerable<string> EnumerateMembers() => from m in members select m.ToString();
 
-        public ObservableCollection<Member> GetSampleMemberships() // temporary membership list
-        {
-            ObservableCollection<Member> tempMembers = new ObservableCollection<Member>
-            {
-                new Member("John", "Nguyen", "John@csulb.edu"),
-                new Member("James", "Davis", "James@verizon.net")
-            };
-            return tempMembers;
-        }
     }
 }
