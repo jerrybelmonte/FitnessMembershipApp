@@ -41,17 +41,12 @@ namespace GymMembers.Model
         {
             try
             {
-                //StreamReader input = new StreamReader(new FileStream(filepath, FileMode.OpenOrCreate, FileAccess.Read));
-
-                //TODO: read the text file
                 char[] separators = new char[] { ' ', ',' };
                 var fileData = from line in File.ReadLines(filepath) 
                                let parts = line.Split(separators, StringSplitOptions.RemoveEmptyEntries) 
                                select new Member(parts[0], parts[1], parts[2]);
 
                 members = new ObservableCollection<Member>(fileData);
-                
-                //input.Close();
             }
             catch (FileNotFoundException)
             {
