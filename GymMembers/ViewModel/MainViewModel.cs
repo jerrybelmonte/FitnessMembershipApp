@@ -140,9 +140,9 @@ namespace GymMembers.ViewModel
         {
             if (m.Message == "Update")
             {
-                // Replace Member at index of selectedMember.
+                // KEIRA: Replace Member at index of selectedMember.
                 members[members.IndexOf(selectedMember)] = m;
-                // Update Membership database.
+                // KEIRA: Update Membership database.
                 database.SaveMemberships();
             }
             else if (m.Message == "Add")
@@ -160,7 +160,8 @@ namespace GymMembers.ViewModel
         { 
             if (msg.Notification == "Delete")
             {
-                //TODO delete
+                // KEIRA "Delete" the currently selectedMember from the list of Members ("members")
+                members.RemoveAt(members.IndexOf(selectedMember));
                 database.SaveMemberships();
             }
         }

@@ -66,7 +66,7 @@ namespace GymMembers.ViewModel
         {
             try
             {
-                // TODO Messenger.Default.Send();
+                // KEIRA: Messenger.Default.Send();
                 var changeViewModelMessage = new MessageMember(EnteredFName, EnteredLName, EnteredEmail, "Update");
                 Messenger.Default.Send(changeViewModelMessage); // sends "Update" message to MainViewModel.ReceiveMember(MessageMember m)
                 window.Close();
@@ -93,7 +93,9 @@ namespace GymMembers.ViewModel
         {
             if (window != null)
             {
-                //Messenger.Default.Send(); //TODO
+                // TODO: Messenger.Default.Send();
+                var deleteViewModelMessage = new NotificationMessage("Delete");
+                Messenger.Default.Send(deleteViewModelMessage); // sends "Delete" message to MainViewModel.ReceiveMessage(NotificationMessage msg)
                 window.Close();
             }
         }
