@@ -42,8 +42,6 @@ namespace GymMembers.ViewModel
         public AddViewModel()
         {
             SaveCommand = new RelayCommand<IClosable>(SaveMethod);
-            // KEIRA: (ErrorWindow.xaml Pop-Up) Attach ShowCommand to ShowMethod to act as an event.
-            //ShowCommand = new RelayCommand<IClosable>(ShowMethod);
             // KEIRA: (CancelCommand) Attach CancelCommand to CancelMethod to act as an event.
             CancelCommand = new RelayCommand<IClosable>(CancelMethod);
         }
@@ -56,10 +54,9 @@ namespace GymMembers.ViewModel
         /// <summary>
         /// The command that triggers closing the add window.
         /// </summary>
+        /// 
+        // KEIRA: (CancelCommand) Add CancelCommand.
         public ICommand CancelCommand { get; private set; } // REVIEW: Equivalent to "public RelayCommand<IClosable> ExitCommand { get; private set; }" ?
-
-        // KEIRA: (ErrorWindow.xaml Pop-Up) Add ShowCommand.
-        public ICommand ShowCommand { get; private set; }
 
         /// <summary>
         /// Sends a valid member to the Main VM to add to the list, then closes the window.
@@ -103,12 +100,6 @@ namespace GymMembers.ViewModel
                 window.Close();
             }
         }
-
-/*        // KEIRA: (ErrorWindow.xaml Pop-Up) Add ShowMethod().
-        public void ShowMethod(IClosable window) {
-            ErrorWindow errorWindow = new ErrorWindow();
-            errorWindow.Show();
-        }*/
 
         /// <summary>
         /// The currently entered first name in the add window.
