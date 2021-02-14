@@ -48,7 +48,9 @@ namespace GymMembers.ViewModel
             AddCommand = new RelayCommand<IClosable>(AddMethod);
             // KEIRA: (ExitCommand) Attach ExitCommand to ExitMethod() to act as an event. 
             this.ExitCommand = new RelayCommand<IClosable>(this.ExitMethod);
-            // TODO: ChangedCommand =
+            // KEIRA: (ChangeWindow Pop-Up) Attach ChangeCommand to ChangeMethod to act as an event.
+            ChangeCommand = new RelayCommand<IClosable>(ChangeMethod);
+
             Messenger.Default.Register<MessageMember>(this, ReceiveMember);
             Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
         }
@@ -109,17 +111,20 @@ namespace GymMembers.ViewModel
                 window.Close();
             }
         }
-        
+
         /// <summary>
         /// Opens the change window.
         /// </summary>
-        public void ChangeMethod() //TODO: ChangeMethod()
+        /// 
+        // KEIRA: (ChangeWindow Pop-Up) Add ChangeMethod().
+        public void ChangeMethod(IClosable window) // KEIRA: (Needs IClosable as a parameter to match RelayCommand/delegate signature.)
         {
             if (SelectedMember != null)
             {
                 ChangeWindow change = new ChangeWindow();
                 change.Show();
-                //Messenger.Default.Send(); //TODO send
+                // TODO send:
+                //Messenger.Default.Send();
             }
         }
         

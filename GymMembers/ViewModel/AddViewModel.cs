@@ -43,7 +43,7 @@ namespace GymMembers.ViewModel
         {
             SaveCommand = new RelayCommand<IClosable>(SaveMethod);
             // KEIRA: (ErrorWindow.xaml Pop-Up) Attach ShowCommand to ShowMethod to act as an event.
-            ShowCommand = new RelayCommand<IClosable>(ShowMethod);
+            //ShowCommand = new RelayCommand<IClosable>(ShowMethod);
             // KEIRA: (CancelCommand) Attach CancelCommand to CancelMethod to act as an event.
             CancelCommand = new RelayCommand<IClosable>(CancelMethod);
         }
@@ -104,11 +104,11 @@ namespace GymMembers.ViewModel
             }
         }
 
-        // KEIRA: (ErrorWindow.xaml Pop-Up) Add ShowMethod().
+/*        // KEIRA: (ErrorWindow.xaml Pop-Up) Add ShowMethod().
         public void ShowMethod(IClosable window) {
             ErrorWindow errorWindow = new ErrorWindow();
             errorWindow.Show();
-        }
+        }*/
 
         /// <summary>
         /// The currently entered first name in the add window.
