@@ -29,8 +29,6 @@
         <TextBox x:Name="textBox2" Text="{Binding EnteredLName}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="120" Grid.Row="2" Grid.Column="1"/>
         <TextBox x:Name="textBox3" Text="{Binding EnteredEmail}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="120" Grid.Row="3" Grid.Column="1"/>
         <!-- Buttons -->
-
-        <!-- TODO: Set Binding=ShowCommand to open ErrorWindow on clicking the Save button for testing. Change so that ErrorWindow only "shows" when input is invalid. -->
         <Button x:Name="button1" Content="Update" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding UpdateCommand}" CommandParameter="{Binding ElementName= changeWindow}" Width="75" Grid.Row="4" Grid.Column="0"/>
         <Button x:Name="button2" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName= changeWindow}" Width="75" Grid.Row="4" Grid.Column="1"/>
     </Grid>

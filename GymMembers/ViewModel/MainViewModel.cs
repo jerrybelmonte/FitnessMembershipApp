@@ -126,8 +126,8 @@ namespace GymMembers.ViewModel
             {
                 ChangeWindow change = new ChangeWindow();
                 change.Show();
-                // TODO send:
-                //Messenger.Default.Send();
+                // TODO Send selectedMember to ChangeViewModel; ChangeViewModel must receive the SelectedMember from MainViewModel in order to auto-fill input boxes.
+                Messenger.Default.Send(SelectedMember);
             }
         }
         
@@ -136,7 +136,7 @@ namespace GymMembers.ViewModel
         /// </summary>
         /// <param name="m">The member to add. The message denotes how it is added.
         /// "Update" replaces at the specified index, "Add" adds it to the list.</param>
-        public void ReceiveMember(MessageMember m) //TODO: ReceiveMember()
+        public void ReceiveMember(MessageMember m)
         {
             if (m.Message == "Update")
             {

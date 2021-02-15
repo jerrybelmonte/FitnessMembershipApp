@@ -41,6 +41,7 @@ namespace GymMembers.ViewModel
         /// </summary>
         public ChangeViewModel()
         {
+            //GetSelected();
             // KEIRA: (UpdateCommand) Attach UpdateCommand to UpdateMethod to act as an event.
             UpdateCommand = new RelayCommand<IClosable>(UpdateMethod);
             // KEIRA: (DeleteCommand) Attach DeleteCommand to DeleteMethod to act as an event.
@@ -93,7 +94,7 @@ namespace GymMembers.ViewModel
         {
             if (window != null)
             {
-                // TODO: Messenger.Default.Send();
+                // KEIRA: Messenger.Default.Send();
                 var deleteViewModelMessage = new NotificationMessage("Delete");
                 Messenger.Default.Send(deleteViewModelMessage); // sends "Delete" message to MainViewModel.ReceiveMessage(NotificationMessage msg)
                 window.Close();
@@ -104,9 +105,14 @@ namespace GymMembers.ViewModel
         /// Receives a member from the Main VM to auto-fill the change box with the currently selected member.
         /// </summary>
         /// <param name="m">The member data to fill in.</param>
+        /// 
+        // TODO: ChangeViewModel must receive the selectedMember from MainViewModel in order to auto-fill input boxes.
         public void GetSelected(Member m)
         {
-            //TODO
+            // TODO: "Auto-fill" the input boxes of ChangeWindow w/ the SelectedMember's values.
+            EnteredFName = m.FirstName;
+            EnteredLName = m.LastName;
+            enteredEmail = m.Email;
         }
 
         /// <summary>
