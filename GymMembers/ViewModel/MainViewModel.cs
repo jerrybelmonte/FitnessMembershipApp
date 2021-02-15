@@ -47,7 +47,7 @@ namespace GymMembers.ViewModel
             // KEIRA: (AddWindow.xaml Pop-Up) Attach AddCommand to AddMethod to act as an event.
             AddCommand = new RelayCommand<IClosable>(AddMethod);
             // KEIRA: (ExitCommand) Attach ExitCommand to ExitMethod() to act as an event. 
-            this.ExitCommand = new RelayCommand<IClosable>(this.ExitMethod);
+            ExitCommand = new RelayCommand<IClosable>(ExitMethod);
             // KEIRA: (ChangeWindow Pop-Up) Attach ChangeCommand to ChangeMethod to act as an event.
             ChangeCommand = new RelayCommand<IClosable>(ChangeMethod);
 
@@ -124,7 +124,7 @@ namespace GymMembers.ViewModel
                 ChangeWindow change = new ChangeWindow();
                 change.Show();
                 // TODO send:
-                //Messenger.Default.Send();
+                Messenger.Default.Send(SelectedMember);
             }
         }
         
@@ -138,6 +138,9 @@ namespace GymMembers.ViewModel
             if (m.Message == "Update")
             {
                 //TODO update
+                int index = members.IndexOf(SelectedMember);
+                members.RemoveAt(index);
+                members.Add(new Member(m.FirstName, m.LastName, m.Email));
                 database.SaveMemberships();
             }
             else if (m.Message == "Add")
@@ -156,6 +159,7 @@ namespace GymMembers.ViewModel
             if (msg.Notification == "Delete")
             {
                 //TODO delete
+                members.Remove(SelectedMember);
                 database.SaveMemberships();
             }
         }

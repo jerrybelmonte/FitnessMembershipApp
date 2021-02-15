@@ -26,7 +26,7 @@ namespace GymMembers.View
         {
             InitializeComponent();
             // KEIRA: (ErrorWindow.xaml Pop-Up) Bind DataContext of AddWindow to AddViewModel.
-            this.DataContext = new AddViewModel();
+            DataContext = new AddViewModel();
         }
     }
 }

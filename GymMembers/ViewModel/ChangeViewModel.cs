@@ -36,7 +36,10 @@ namespace GymMembers.ViewModel
         public ChangeViewModel()
         {
             //TODO
-            //Messenger.Default.Register<Member>(this,);
+            UpdateCommand = new RelayCommand<IClosable>(UpdateMethod);
+            DeleteCommand = new RelayCommand<IClosable>(DeleteMethod);
+
+            Messenger.Default.Register<Member>(this, GetSelected);
         }
 
         /// <summary>
@@ -57,8 +60,12 @@ namespace GymMembers.ViewModel
         {
             try
             {
-                //Messenger.Default.Send(); TODO
-                window.Close();
+                if (window != null)
+                {
+                    var changeViewModelMessage = new MessageMember(EnteredFName, EnteredLName, EnteredEmail, "Update");
+                    Messenger.Default.Send(changeViewModelMessage); // sends "Update" message to MainViewModel.ReceiveMember(MessageMember m)
+                    window.Close();
+                }
             }
             catch (ArgumentException)
             {
@@ -82,7 +89,7 @@ namespace GymMembers.ViewModel
         {
             if (window != null)
             {
-                //Messenger.Default.Send(); //TODO
+                Messenger.Default.Send(new NotificationMessage("Delete")); // send a "Delete" notification message to MainViewModel.ReceiveMessage(NotificationMessage msg)
                 window.Close();
             }
         }
@@ -93,7 +100,9 @@ namespace GymMembers.ViewModel
         /// <param name="m">The member data to fill in.</param>
         public void GetSelected(Member m)
         {
-            //TODO
+            EnteredFName = m.FirstName;
+            EnteredLName = m.LastName;
+            EnteredEmail = m.Email;
         }
 
         /// <summary>

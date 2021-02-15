@@ -11,17 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GymMembers.ViewModel;
 
 namespace GymMembers.View
 {
     /// <summary>
     /// Interaction logic for ChangeWindow.xaml
     /// </summary>
-    public partial class ChangeWindow : Window
+    public partial class ChangeWindow : Window, IClosable
     {
         public ChangeWindow()
         {
             InitializeComponent();
+            DataContext = new ChangeViewModel();
         }
     }
 }
