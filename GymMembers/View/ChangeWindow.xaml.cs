@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
+// KEIRA: (ChangeWindow.xaml Pop-Up) Added namespace.
 using GymMembers.ViewModel;
 
 namespace GymMembers.View
@@ -18,11 +20,12 @@ namespace GymMembers.View
     /// <summary>
     /// Interaction logic for ChangeWindow.xaml
     /// </summary>
-    public partial class ChangeWindow : Window, IClosable
+    public partial class ChangeWindow : Window, IClosable // KEIRA: (ChangeWindow.xaml Pop-Up) ChangeWindow must also implement the IClosable interface.
     {
         public ChangeWindow()
         {
             InitializeComponent();
+            // KEIRA: (ChangeWindow.xaml Pop-Up) Bind DataContext of Changeindow to ChangeViewModel.
             DataContext = new ChangeViewModel();
         }
     }

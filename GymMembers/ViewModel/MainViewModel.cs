@@ -44,6 +44,7 @@ namespace GymMembers.ViewModel
             members = new ObservableCollection<Member>();
             database = new MemberDB(members); // dependency injection of the members list into the database instance
             members = database.GetMemberships();
+
             // KEIRA: (AddWindow.xaml Pop-Up) Attach AddCommand to AddMethod to act as an event.
             AddCommand = new RelayCommand<IClosable>(AddMethod);
             // KEIRA: (ExitCommand) Attach ExitCommand to ExitMethod() to act as an event. 
@@ -72,6 +73,8 @@ namespace GymMembers.ViewModel
         /// <summary>
         /// The command that triggers changing the membership.
         /// </summary>
+        /// 
+        // KEIRA: (ChangeCommand) Add ChangeCommand.
         public ICommand ChangeCommand { get; private set; }
 
         /// <summary>

@@ -8,6 +8,12 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 
+// REVIEW: (UpdateCommand) Add namespaces.
+using GymMembers.View;
+using Prism.Mvvm;
+using Prism.Commands;
+using System.Windows.Data;
+
 namespace GymMembers.ViewModel
 {
     /// <summary>
@@ -35,10 +41,10 @@ namespace GymMembers.ViewModel
         /// </summary>
         public ChangeViewModel()
         {
-            //TODO
+            // KEIRA: (UpdateCommand) Attach UpdateCommand to UpdateMethod to act as an event.
             UpdateCommand = new RelayCommand<IClosable>(UpdateMethod);
+            // KEIRA: (DeleteCommand) Attach DeleteCommand to DeleteMethod to act as an event.
             DeleteCommand = new RelayCommand<IClosable>(DeleteMethod);
-
             Messenger.Default.Register<Member>(this, GetSelected);
         }
 
@@ -60,6 +66,7 @@ namespace GymMembers.ViewModel
         {
             try
             {
+                // KEIRA: Messenger.Default.Send();
                 if (window != null)
                 {
                     var changeViewModelMessage = new MessageMember(EnteredFName, EnteredLName, EnteredEmail, "Update");
@@ -89,7 +96,8 @@ namespace GymMembers.ViewModel
         {
             if (window != null)
             {
-                Messenger.Default.Send(new NotificationMessage("Delete")); // send a "Delete" notification message to MainViewModel.ReceiveMessage(NotificationMessage msg)
+                // TODO: Messenger.Default.Send();
+                Messenger.Default.Send(new NotificationMessage("Delete")); // sends "Delete" message to MainViewModel.ReceiveMessage(NotificationMessage msg)
                 window.Close();
             }
         }
