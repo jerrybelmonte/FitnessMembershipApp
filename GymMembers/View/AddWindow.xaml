@@ -29,7 +29,7 @@
         <TextBox x:Name="textBox2" Text="{Binding EnteredLName}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="120" Grid.Row="2" Grid.Column="1"/>
         <TextBox x:Name="textBox3" Text="{Binding EnteredEmail}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="120" Grid.Row="3" Grid.Column="1"/>
         <!-- Buttons -->
-        <Button x:Name="button1" Content="Save" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName= addWindow}" Width="75" Grid.Row="4" Grid.Column="0"/>
-        <Button x:Name="button2" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName= addWindow}" Width="75" Grid.Row="4" Grid.Column="1"/>
+        <Button x:Name="button1" Content="Save" Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=addWindow}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Grid.Row="4" Grid.Column="0"/>
+        <Button x:Name="button2" Content="Cancel" Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=addWindow}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Grid.Row="4" Grid.Column="1"/>
     </Grid>
 </Window>

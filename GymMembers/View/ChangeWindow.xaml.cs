@@ -26,7 +26,7 @@ namespace GymMembers.View
         {
             InitializeComponent();
             // KEIRA: (ChangeWindow.xaml Pop-Up) Bind DataContext of Changeindow to ChangeViewModel.
-            this.DataContext = new ChangeViewModel();
+            DataContext = new ChangeViewModel();
         }
     }
 }

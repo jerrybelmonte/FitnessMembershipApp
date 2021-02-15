@@ -46,7 +46,7 @@ namespace GymMembers.ViewModel
             UpdateCommand = new RelayCommand<IClosable>(UpdateMethod);
             // KEIRA: (DeleteCommand) Attach DeleteCommand to DeleteMethod to act as an event.
             DeleteCommand = new RelayCommand<IClosable>(DeleteMethod);
-            //Messenger.Default.Register<Member>(this,);
+            Messenger.Default.Register<Member>(this, GetSelected);
         }
 
         /// <summary>
@@ -68,9 +68,12 @@ namespace GymMembers.ViewModel
             try
             {
                 // KEIRA: Messenger.Default.Send();
-                var changeViewModelMessage = new MessageMember(EnteredFName, EnteredLName, EnteredEmail, "Update");
-                Messenger.Default.Send(changeViewModelMessage); // sends "Update" message to MainViewModel.ReceiveMember(MessageMember m)
-                window.Close();
+                if (window != null)
+                {
+                    var changeViewModelMessage = new MessageMember(EnteredFName, EnteredLName, EnteredEmail, "Update");
+                    Messenger.Default.Send(changeViewModelMessage); // sends "Update" message to MainViewModel.ReceiveMember(MessageMember m)
+                    window.Close();
+                }
             }
             catch (ArgumentException)
             {
@@ -94,9 +97,8 @@ namespace GymMembers.ViewModel
         {
             if (window != null)
             {
-                // KEIRA: Messenger.Default.Send();
-                var deleteViewModelMessage = new NotificationMessage("Delete");
-                Messenger.Default.Send(deleteViewModelMessage); // sends "Delete" message to MainViewModel.ReceiveMessage(NotificationMessage msg)
+                // TODO: Messenger.Default.Send();
+                Messenger.Default.Send(new NotificationMessage("Delete")); // sends "Delete" message to MainViewModel.ReceiveMessage(NotificationMessage msg)
                 window.Close();
             }
         }
@@ -109,10 +111,9 @@ namespace GymMembers.ViewModel
         // TODO: ChangeViewModel must receive the selectedMember from MainViewModel in order to auto-fill input boxes.
         public void GetSelected(Member m)
         {
-            // TODO: "Auto-fill" the input boxes of ChangeWindow w/ the SelectedMember's values.
             EnteredFName = m.FirstName;
             EnteredLName = m.LastName;
-            enteredEmail = m.Email;
+            EnteredEmail = m.Email;
         }
 
         /// <summary>
