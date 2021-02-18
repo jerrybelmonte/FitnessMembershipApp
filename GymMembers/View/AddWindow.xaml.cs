@@ -11,22 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
-// KEIRA: (ErrorWindow.xaml Pop-Up) Added namespace.
 using GymMembers.ViewModel;
 
 namespace GymMembers.View
+
 {
     /// <summary>
     /// Interaction logic for AddWindow.xaml
     /// </summary>
-    public partial class AddWindow : Window, IClosable // KEIRA: (CancelCommand) AddWindow must also implement the IClosable interface.
+    public partial class AddWindow : Window, IClosable
     {
         public AddWindow()
         {
             InitializeComponent();
-            // KEIRA: (ErrorWindow.xaml Pop-Up) Bind DataContext of AddWindow to AddViewModel.
-            DataContext = new AddViewModel();
         }
     }
 }

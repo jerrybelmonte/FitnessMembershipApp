@@ -22,7 +22,7 @@
 
         <Button x:Name="button1" Content="Add" 
                 Grid.Row="1" Grid.Column="1" 
-                Command="{Binding AddCommand}" 
+                Command="{Binding AddCommand, Mode=OneWay}" 
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
                 Width="75" Margin="0,50,0,0"/>
         
