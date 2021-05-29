@@ -12,8 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-// KEIRA: (AddWindow.xaml Pop-Up) Added namespace.
 using GymMembers.ViewModel;
 
 namespace GymMembers.View
@@ -21,13 +19,11 @@ namespace GymMembers.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IClosable // KEIRA: (ExitCommand) MainWindow must also implement the IClosable interface.
+    public partial class MainWindow : Window, IClosable 
     {
         public MainWindow()
         {
             InitializeComponent();
-            // KEIRA: (AddWindow.xaml Pop-Up) Bind DataContext of MainWindow to MainViewModel.
-            this.DataContext = new MainViewModel();
         }
     }
 }

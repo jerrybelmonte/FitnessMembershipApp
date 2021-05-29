@@ -17,21 +17,39 @@ namespace GymMembers.ViewModel
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+
             SimpleIoc.Default.Register<MainViewModel>();
-            //TODO: Register other views
+            SimpleIoc.Default.Register<AddViewModel>();
+            SimpleIoc.Default.Register<ChangeViewModel>();
         }
 
         /// <summary>
         /// A property that lets the main window connect with its View Model.
         /// </summary>
-        public MainViewModel Main
+        public MainViewModel MainViewModel
         {
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public AddViewModel AddViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddViewModel>();
+            }
+        }
+
+        public ChangeViewModel ChangeViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ChangeViewModel>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

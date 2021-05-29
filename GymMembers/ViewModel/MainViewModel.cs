@@ -3,16 +3,8 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GymMembers.Model;
 using GymMembers.View;
-using System;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Windows;
 using System.Windows.Input;
-
-// KEIRA: (AddWindow.xaml Pop-Up) Add namespaces.
-using Prism.Mvvm;
-using Prism.Commands;
-using System.Windows.Data;
 
 namespace GymMembers.ViewModel
 {
@@ -39,17 +31,14 @@ namespace GymMembers.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel() //TODO: MainViewModel() constructor
+        public MainViewModel() 
         {
             members = new ObservableCollection<Member>();
-            database = new MemberDB(members); // dependency injection of the members list into the database instance
+            database = new MemberDB(members);
             members = database.GetMemberships();
 
-            // KEIRA: (AddWindow.xaml Pop-Up) Attach AddCommand to AddMethod to act as an event.
             AddCommand = new RelayCommand<IClosable>(AddMethod);
-            // KEIRA: (ExitCommand) Attach ExitCommand to ExitMethod() to act as an event. 
             ExitCommand = new RelayCommand<IClosable>(ExitMethod);
-            // KEIRA: (ChangeWindow Pop-Up) Attach ChangeCommand to ChangeMethod to act as an event.
             ChangeCommand = new RelayCommand<IClosable>(ChangeMethod);
 
             Messenger.Default.Register<MessageMember>(this, ReceiveMember);
@@ -136,17 +125,15 @@ namespace GymMembers.ViewModel
         /// </summary>
         /// <param name="m">The member to add. The message denotes how it is added.
         /// "Update" replaces at the specified index, "Add" adds it to the list.</param>
-        public void ReceiveMember(MessageMember m)
+        public void ReceiveMember(MessageMember m) 
         {
-            if (m.Message == "Update")
+            if (m.Message == "Update") // From UpdateCommand in ChangeViewModel.UpdateMethod()
             {
-                //TODO update
-                int index = members.IndexOf(SelectedMember);
-                members.RemoveAt(index);
+                members.RemoveAt(members.IndexOf(SelectedMember));
                 members.Add(new Member(m.FirstName, m.LastName, m.Email));
                 database.SaveMemberships();
             }
-            else if (m.Message == "Add")
+            else if (m.Message == "Add") // From SaveCommand in AddViewModel.SaveMethod()
             {
                 members.Add(new Member(m.FirstName, m.LastName, m.Email));
                 database.SaveMemberships();
@@ -159,9 +146,8 @@ namespace GymMembers.ViewModel
         /// <param name="msg">The received message. "Delete" means the currently selected member is deleted.</param>
         public void ReceiveMessage(NotificationMessage msg) 
         { 
-            if (msg.Notification == "Delete")
+            if (msg.Notification == "Delete") // From DeleteCommand in ChangeViewModel.DeleteMethod()
             {
-                //TODO delete
                 members.Remove(SelectedMember);
                 database.SaveMemberships();
             }

@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:GymMembers.ViewModel"
         xmlns:local="clr-namespace:GymMembers.View"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=ChangeViewModel}"
@@ -29,7 +30,7 @@
         <TextBox x:Name="textBox2" Text="{Binding EnteredLName}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="120" Grid.Row="2" Grid.Column="1"/>
         <TextBox x:Name="textBox3" Text="{Binding EnteredEmail}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="120" Grid.Row="3" Grid.Column="1"/>
         <!-- Buttons -->
-        <Button x:Name="button1" Content="Update" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding UpdateCommand}" CommandParameter="{Binding ElementName=changeWindow}" Width="75" Grid.Row="4" Grid.Column="0"/>
-        <Button x:Name="button2" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Top" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=changeWindow}" Width="75" Grid.Row="4" Grid.Column="1"/>
+        <Button x:Name="button1" Content="Update" Command="{Binding UpdateCommand}" CommandParameter="{Binding ElementName=changeWindow}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Grid.Row="4" Grid.Column="0"/>
+        <Button x:Name="button2" Content="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=changeWindow}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Grid.Row="4" Grid.Column="1"/>
     </Grid>
 </Window>

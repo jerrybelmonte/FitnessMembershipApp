@@ -3,16 +3,8 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GymMembers.Model;
 using System;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
-
-// KEIRA: (ErrorWindow.xaml Pop-Up) Add namespaces.
-using GymMembers.View;
-using Prism.Mvvm;
-using Prism.Commands;
-using System.Windows.Data;
 
 namespace GymMembers.ViewModel
 {
@@ -42,7 +34,6 @@ namespace GymMembers.ViewModel
         public AddViewModel()
         {
             SaveCommand = new RelayCommand<IClosable>(SaveMethod);
-            // KEIRA: (CancelCommand) Attach CancelCommand to CancelMethod to act as an event.
             CancelCommand = new RelayCommand<IClosable>(CancelMethod);
         }
 
@@ -54,9 +45,7 @@ namespace GymMembers.ViewModel
         /// <summary>
         /// The command that triggers closing the add window.
         /// </summary>
-        /// 
-        // KEIRA: (CancelCommand) Add CancelCommand.
-        public ICommand CancelCommand { get; private set; } // REVIEW: Equivalent to "public RelayCommand<IClosable> ExitCommand { get; private set; }" ?
+        public ICommand CancelCommand { get; private set; } 
 
         /// <summary>
         /// Sends a valid member to the Main VM to add to the list, then closes the window.
@@ -68,8 +57,9 @@ namespace GymMembers.ViewModel
             {
                 if (window != null)
                 {
+                    // sends "Add" message to MainViewModel.ReceiveMember(MessageMember m)
                     var addViewModelMessage = new MessageMember(EnteredFName, EnteredLName, EnteredEmail, "Add");
-                    Messenger.Default.Send(addViewModelMessage); // sends "Add" message to MainViewModel.ReceiveMember(MessageMember m)
+                    Messenger.Default.Send(addViewModelMessage); 
                     window.Close();
                 }
             }
@@ -91,8 +81,6 @@ namespace GymMembers.ViewModel
         /// Closes the window.
         /// </summary>
         /// <param name="window">The window to close.</param>
-        /// 
-        // KEIRA: (CancelCommand) Add CancelMethod().
         public void CancelMethod(IClosable window)
         {
             if (window != null)
